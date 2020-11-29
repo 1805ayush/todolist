@@ -49,18 +49,18 @@ app.get("/", function (req, res) {
 
   Item.find({}, function (err, foundItems) {
 
-    if (foundItems.length === 0) {
-      Item.insertMany(defaultItems, function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Successfully added");
-        }
-      })
-      res.redirect("/");
-    }else{
+    // if (foundItems.length === 0) {
+    //   Item.insertMany(defaultItems, function (err) {
+    //     if (err) {
+    //       console.log(err);
+    //     } else {
+    //       console.log("Successfully added");
+    //     }
+    //   })
+    //   res.redirect("/");
+    // }else{
       res.render("list", { listTitle: "Today", newListItems: foundItems });
-    }
+    // }
   });
 });
 
@@ -94,19 +94,19 @@ app.get("/:newList", function (req, res) {
   const newListTitle = _.capitalize(req.params.newList);
   List.findOne({name: newListTitle},function(err, foundList){
     if(!err){
-      if(!foundList){
-        //create new list
-        const list = new List({
-          name: newListTitle,
-          items: defaultItems,
-        });
+      // if(!foundList){
+      //   //create new list
+      //   const list = new List({
+      //     name: newListTitle,
+      //     items: defaultItems,
+      //   });
       
-         list.save();
-        res.redirect("/"+newListTitle);
-      }else{
-        //show existing list
+      //    list.save();
+      //   res.redirect("/"+newListTitle);
+      // }else{
+      //   //show existing list
           res.render("list", { listTitle: foundList.name, newListItems: foundList.items });
-      }
+      // }
     }
   })
  
