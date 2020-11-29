@@ -34,7 +34,7 @@ const keyboard = new Item({
   name: "Play the keyboard",
 });
 
-const defaultItems = [webdev, guitar, keyboard];
+const defaultItems = [];
 
 
 const listSchema={
