@@ -16,7 +16,7 @@ app.use(express.static("public"));
 // const workItems = [];
 
 
-mongoose.connect("mongodb+srv://admin-ayush:test123@cluster0.gsykf.mongodb.net/todolistDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://"+process.env.USERID+":"+process.env.PASSWORD+"@cluster0.gsykf.mongodb.net/todolistDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 const itemsSchema = {
   name: String,
